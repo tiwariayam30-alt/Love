@@ -6,7 +6,6 @@
 <title>Niharika ❤️ Ayam</title>
 
 <style>
-@import url('https://fonts.cdnfonts.com/css/algerian');
 
 *{
 margin:0;
@@ -16,7 +15,7 @@ box-sizing:border-box;
 
 body{
 background:linear-gradient(135deg,#ff9eb5,#ff6f91);
-font-family:Algerian, serif;
+font-family:cursive;
 font-weight:bold;
 overflow:hidden;
 text-align:center;
@@ -24,7 +23,8 @@ color:white;
 height:100vh;
 }
 
-/* SOFT FLOATING ANIMATION */
+/* FLOATING HEARTS */
+
 body::before,
 body::after{
 content:"❤️";
@@ -46,18 +46,24 @@ animation-delay:3s;
 }
 
 @keyframes float{
+
 0%{
 transform:translateY(0) rotate(0deg);
 opacity:0;
 }
+
 20%{
 opacity:0.5;
 }
+
 100%{
 transform:translateY(-120vh) rotate(360deg);
 opacity:0;
 }
+
 }
+
+/* PAGE */
 
 .page{
 height:100vh;
@@ -70,15 +76,20 @@ animation:fade 1s ease;
 }
 
 @keyframes fade{
+
 from{
 opacity:0;
 transform:scale(0.95);
 }
+
 to{
 opacity:1;
 transform:scale(1);
 }
+
 }
+
+/* PHOTO */
 
 .photo{
 width:300px;
@@ -91,22 +102,30 @@ animation:softMove 3s infinite ease-in-out;
 }
 
 @keyframes softMove{
+
 0%{
 transform:translateY(0px);
 }
+
 50%{
 transform:translateY(-10px);
 }
+
 100%{
 transform:translateY(0px);
 }
+
 }
+
+/* TEXT */
 
 h1{
 font-size:40px;
 margin-bottom:20px;
 text-shadow:0 0 10px rgba(255,255,255,0.8);
 }
+
+/* BUTTONS */
 
 button{
 padding:15px 30px;
@@ -120,7 +139,7 @@ margin:10px;
 cursor:pointer;
 transition:0.3s;
 box-shadow:0 0 15px rgba(255,255,255,0.5);
-font-family:Algerian, serif;
+font-family:cursive;
 }
 
 button:hover{
@@ -132,6 +151,8 @@ background:#ffe6ee;
 display:none;
 }
 
+/* FINAL TEXT */
+
 .final{
 font-size:32px;
 line-height:1.8;
@@ -140,22 +161,30 @@ animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
+
 from{
 text-shadow:0 0 10px white;
 }
+
 to{
 text-shadow:0 0 25px #fff;
 }
+
 }
+
+/* NO BUTTON */
 
 #noBtn{
 position:relative;
+transition:0.2s;
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- PAGE 1 -->
 
 <div class="page" id="page1">
 
@@ -173,6 +202,8 @@ What? 👀
 </button>
 
 </div>
+
+<!-- PAGE 2 -->
 
 <div class="page hidden" id="page2">
 
@@ -194,23 +225,32 @@ No 💔
 
 </div>
 
+<!-- PAGE 3 -->
+
 <div class="page hidden" id="page3">
 
 <div class="final">
-Ayam Will Always Love Niharika Forever ❤️<br><br>
+Ayam Will Always Love Niharika Forever ❤️
+<br><br>
 Ayam Loves Niharika Forever 💖
 </div>
 
 </div>
 
-<audio id="song" loop autoplay>
-<source src="song.mp3" type="audio/mp3">
+<!-- SONG -->
+
+<audio id="song" loop preload="auto">
+
+<source src="https://files.catbox.moe/nyg24y.mp3" type="audio/mp3">
+
 </audio>
 
 <script>
 
-const song=document.getElementById("song");
-const noBtn=document.getElementById("noBtn");
+const song = document.getElementById("song");
+const noBtn = document.getElementById("noBtn");
+
+/* NEXT PAGE + SONG */
 
 function nextPage(){
 
@@ -218,9 +258,31 @@ document.getElementById("page1").classList.add("hidden");
 
 document.getElementById("page2").classList.remove("hidden");
 
-song.play();
+/* PLAY SONG */
+
+song.volume = 1;
+
+let playPromise = song.play();
+
+if(playPromise !== undefined){
+
+playPromise.then(_ => {
+
+console.log("Song Playing");
+
+})
+
+.catch(error => {
+
+console.log("Autoplay Blocked");
+
+});
 
 }
+
+}
+
+/* FINAL PAGE */
 
 function finalPage(){
 
@@ -233,14 +295,16 @@ document.getElementById("page3").classList.remove("hidden");
 /* MOVING NO BUTTON */
 
 noBtn.addEventListener("mouseover", moveButton);
+
 noBtn.addEventListener("click", moveButton);
 
 function moveButton(){
 
-const x=Math.floor(Math.random()*300)-150;
-const y=Math.floor(Math.random()*300)-150;
+const x = Math.floor(Math.random()*300)-150;
 
-noBtn.style.transform=`translate(${x}px, ${y}px)`;
+const y = Math.floor(Math.random()*300)-150;
+
+noBtn.style.transform = `translate(${x}px, ${y}px)`;
 
 }
 
