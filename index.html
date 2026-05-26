@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niharika ❤️ Ayam</title>
+
+<style>
+@import url('https://fonts.cdnfonts.com/css/algerian');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:linear-gradient(135deg,#ff9eb5,#ff6f91);
+font-family:Algerian, serif;
+font-weight:bold;
+overflow:hidden;
+text-align:center;
+color:white;
+height:100vh;
+}
+
+/* SOFT FLOATING ANIMATION */
+body::before,
+body::after{
+content:"❤️";
+position:absolute;
+font-size:40px;
+animation:float 6s infinite linear;
+opacity:0.4;
+}
+
+body::before{
+left:10%;
+top:100%;
+}
+
+body::after{
+right:15%;
+top:100%;
+animation-delay:3s;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+20%{
+opacity:0.5;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+.page{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:scale(0.95);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.photo{
+width:300px;
+max-width:90%;
+border-radius:25px;
+border:5px solid white;
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(255,255,255,0.8);
+animation:softMove 3s infinite ease-in-out;
+}
+
+@keyframes softMove{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-10px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+h1{
+font-size:40px;
+margin-bottom:20px;
+text-shadow:0 0 10px rgba(255,255,255,0.8);
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4d88;
+font-weight:bold;
+margin:10px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px rgba(255,255,255,0.5);
+font-family:Algerian, serif;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffe6ee;
+}
+
+.hidden{
+display:none;
+}
+
+.final{
+font-size:32px;
+line-height:1.8;
+padding:20px;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px white;
+}
+to{
+text-shadow:0 0 25px #fff;
+}
+}
+
+#noBtn{
+position:relative;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page" id="page1">
+
+<img 
+class="photo"
+src="https://i.ibb.co/67YnfgRn/IMG-20260526-WA0001.jpg"
+>
+
+<h1>
+I Want To Ask U Something... 💖
+</h1>
+
+<button onclick="nextPage()">
+What? 👀
+</button>
+
+</div>
+
+<div class="page hidden" id="page2">
+
+<h1>
+Will You Marry Me? 💍
+</h1>
+
+<div>
+
+<button onclick="finalPage()">
+Yes ❤️
+</button>
+
+<button id="noBtn">
+No 💔
+</button>
+
+</div>
+
+</div>
+
+<div class="page hidden" id="page3">
+
+<div class="final">
+Ayam Will Always Love Niharika Forever ❤️<br><br>
+Ayam Loves Niharika Forever 💖
+</div>
+
+</div>
+
+<audio id="song" loop autoplay>
+<source src="song.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+const song=document.getElementById("song");
+const noBtn=document.getElementById("noBtn");
+
+function nextPage(){
+
+document.getElementById("page1").classList.add("hidden");
+
+document.getElementById("page2").classList.remove("hidden");
+
+song.play();
+
+}
+
+function finalPage(){
+
+document.getElementById("page2").classList.add("hidden");
+
+document.getElementById("page3").classList.remove("hidden");
+
+}
+
+/* MOVING NO BUTTON */
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+function moveButton(){
+
+const x=Math.floor(Math.random()*300)-150;
+const y=Math.floor(Math.random()*300)-150;
+
+noBtn.style.transform=`translate(${x}px, ${y}px)`;
+
+}
+
+</script>
+
+</body>
+</html>
